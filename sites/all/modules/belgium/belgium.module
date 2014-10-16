@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * Implement hook_init().
+ */
+/*
+function belgium_init() {
+    $path = drupal_get_path('module', 'belgium');
+    $path_to_js = $path . '/js/script.js';
+    drupal_add_js('https://www.google.com/jsapi');
+    drupal_add_js($path_to_js);
+}*/
+
+/**
+ * Implement hook_block_info().
+ * @return array
+ */
+function belgium_block_info() {
+    $blocks = array();
+
+    $blocks['map'] = array(
+        'info' => t('Belgium map'),
+    );
+
+    return $blocks;
+}
+
+/**
+ * Implement hook_block_info().
+ * @param string $delta
+ * @return array
+ */
+function belgium_block_view($delta = '') {
+    $block = array();
+
+    switch ($delta) {
+        case 'map':
+            $block['subject'] = '';
+            $block['content'] = _belgium_render_map();
+            break;
+    }
+
+    return $block;
+}
+
+/**
+ * @return mixed
+ */
+function _belgium_render_map() {
+    $path = drupal_get_path('module', 'belgium');
+    $path_to_js = $path . '/js/script.js';
+    drupal_add_js('https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["geochart"]}]}');
+    drupal_add_js('https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["geomap"]}]}');
+    drupal_add_js($path_to_js);
+    $output = '<div id="regions_div" style="width: 900px; height: 500px;"></div>';
+    return $output;
+}

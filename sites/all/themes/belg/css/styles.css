@@ -1,0 +1,806 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+/* HTML element (SMACSS base) rules */
+@import "normalize.css";
+/* Layout rules */
+@import "layouts/responsive.css";
+/* Component (SMACSS module) rules */
+@import "components/misc.css";
+/* Optionally, add your own components here. */
+@import "print.css";
+@import url(http://fonts.googleapis.com/css?family=Schoolbell);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600italic,600);
+
+/* SMACSS theme rules */
+/* @import "theme-A.css"; */
+/* @import "theme-B.css"; */
+#header li {
+    list-style-type: none;
+}
+
+body {
+    background-color: #ecf4f5 !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+#page {
+    max-width: 100%;
+}
+
+#header {
+    background-color: #FFFFFF;
+    padding: 0;
+}
+
+#main {
+    padding: 5em 0 0 0;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.border {
+border-bottom: 1px solid #3c3e3d;
+min-height: 2px;
+margin-top: -5px;
+height: 132px;
+clear: right;
+padding-left: 124px;
+}
+.border .houses {
+max-width: 616px;
+text-align: right;
+overflow: hidden;
+height: 131px;
+position: relative;
+}
+
+.icon img {
+    border-radius: 100%;
+    width: 120px;
+}
+
+.title-school, .sitename, .views-field-field-tradition .field-content, .show-title, .sub-red, .sub-green {
+    font-family: 'Schoolbell', cursive, bold;
+}
+
+.sitename {
+    font-size: 5em;
+    margin-bottom: -30px;
+    /*position: absolute;*/
+}
+
+.sitename .name-first {
+    color: #4cb6aa;
+}
+
+.sitename .name-second {
+    color: #de1e21;
+}
+#logo {
+    display: inline-block;
+}
+
+.wrapper-head {
+width: 960px;
+margin: 20px auto 0;
+}
+
+.wrapper {
+width: 150%;
+padding-left: 220px;
+}
+
+.header-right {
+position:absolute;
+width: 280px;
+}
+
+.main-menu a, .main-menu a:hover{
+    color: #404040;
+    display: inline-block;
+    float: left;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 13px
+}
+
+.links {
+    display: inline-block;
+}
+
+.links li {
+    float: left;
+}
+.cl{clear: both;}
+.row-by-four {margin-bottom: 20px; clear: both;overflow: hidden;}
+.nopad-r{margin-right: 0 !important}
+.main-menu {
+margin-bottom: 12px;
+margin-top: 5px;
+display: block;
+max-width: 738px;
+}
+.main-menu ul{float: right;}
+.main-menu ul li.last a{margin-right: 0 !important}
+.view-main-traditions {
+    text-align: center;
+}
+
+.view-main-traditions .views-row {
+    display: inline-block;
+    width:  24%;
+}
+
+.view-main-traditions .title-school {
+    font-size: 17px;
+}
+
+.view-main-traditions .views-field-php > span {
+    background-color: #40af49;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 8px;
+}
+.view-main-traditions .views-field-php a {
+    color: #FFFFFF;
+}
+
+.view-main-traditions .views-field {}
+.view-main-traditions .views-field-php{margin-bottom: 0 !important;margin-top: 15px !important; height: 27px}
+.view-main-traditions .row-by-four{
+    margin-bottom: 60px;
+}
+.view-main-traditions .views-row {
+    float: left
+}
+.view-main-traditions .views-field-body{font-size: 11px}
+.view-main-traditions .views-field-field-tradition {
+margin-bottom: 0 !important;
+}
+#block-block-1 {
+background-color: #851f83;
+border-radius: 8px;
+color: #ffffff;
+float: left;
+font-size: 13px;
+font-weight: 700;
+margin-left: 20px;
+position: relative;
+padding: 5px 10px;
+width: 125px;
+text-align: center;
+top: 75px;
+}
+#block-block-1 a {
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+#block-block-2 a {
+    font-family: 'Schoolbell', cursive, bold;
+    color: #0c0c0c;
+    font-size: 14px;
+}
+#block-block-2 {
+float: left;
+height: 60px;
+position: relative;
+width: 155px;
+margin-bottom: 0;
+top: 66px;
+}
+
+.houses > img {
+position: relative;
+float: left;
+top: 47px;
+}
+
+#block-block-2 li {
+    float: left;
+    margin-left: 5px;
+}
+
+.round {
+    background-color: #57c8d4;
+    display: inline-block;
+    height: 2px;
+    vertical-align: middle;
+    width: 2px;
+}
+
+.views-field-field-date {
+    border-radius: 100%;
+    width: 75px;
+    height: 75px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-style: italic;
+    float: left;
+    margin-right: 25px;
+    display: table;
+}
+
+.views-field-field-date .field-content {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.first .col-first .views-field-field-date{
+    background-color: #639a1f;
+}
+
+.first .col-last .views-field-field-date{
+    background-color: #862084;
+}
+
+.second .col-first .views-field-field-date{
+    background-color: #862084;
+}
+
+.second .col-last .views-field-field-date {
+    background-color: #639a1f;
+}
+
+.show-day {
+    font-size: 34px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+span.date-display-single {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.show-month {font-size: 14px;margin-top: -10px;font-weight: 300;text-transform: lowercase;}
+
+.first .col-first .views-field-field-tradition {
+    color: #639a1f;
+}
+
+.first .col-last .views-field-field-tradition {
+    color: #862084;
+}
+
+.second .col-first .views-field-field-tradition {
+    color: #862084;
+}
+
+.second .col-last .views-field-field-tradition {
+    color: #639a1f;
+}
+
+.views-field-field-tradition {
+    font-size: 28px;
+}
+
+.view-shows-teaser .views-field-body {
+    font-size: 11px;
+}
+
+.view-shows-teaser td {
+    border-top: none !important;
+    padding: 25px !important;
+}
+
+.more {
+    text-align: right;
+    color: #008aaf;
+}
+
+.show-title {
+    font-size: 4em;
+    color: #862084;
+    padding-bottom: 20px;
+}
+.show-title .red {
+    color: #639a1f;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #352417;
+}
+.welcome-section {
+    background-color: #FFFFFF;
+    padding-bottom: 70px;
+}
+
+.zwelkom > img {
+    width: 160px;
+}
+
+.pdf-section, .map-section {
+    background-color: #fcf3da;
+    min-height: 150px;
+}
+
+#footer {
+    background-color: #FFFFFF;
+}
+#block-views-promo-block-block table{
+    border: none !important;
+    margin-top: 0;
+}
+
+/*tradition home*/
+
+.page-tradition .houses > img {
+top: 53px;
+}
+.page-tradition .border {
+   margin-top: 10px;
+   padding-left: 187px
+
+}
+
+
+.page-tradition .views-field-field-tradition {
+    font-size: 5em;
+}
+
+.page-tradition li {
+    list-style-type: none;
+}
+.field-name-field-list-image {
+   /* width: 60px;*/
+}
+
+section.field-when-and-where, section.field-requirements-list{
+    border-top: 2px dotted #419185;
+    margin-top: 25px;
+    padding-top: 25px;
+    text-align: center;
+}
+section.field-requirements-list {
+    border-bottom: 2px dotted #419185;
+
+}
+/*
+section.field-requirements-list ul > li{
+    float: left;
+}*/
+
+section.field-music {
+    border-top: 2px dotted #419185;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+
+.music-left {
+    float: left;
+    width: 200px;
+}
+
+.music-right {
+    float: right;
+    width: 600px
+}
+.music-right .field-name-field-image{text-align: right;}
+.music-right .field-item.even > img {
+    width: 350px;
+}
+
+.music-left .field-name-field-description .field-item {
+    width: 200px;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.music-left .field-name-field-title .field-item {
+    padding-bottom: 25px;
+    color: #419185
+}
+
+section.field-when-and-where li {
+    float: left;
+    width: 205px
+
+}
+
+.view-tradition-home .field-name-field-title, .fblock-title {
+    font-family: 'Schoolbell', cursive, bold;
+    font-size: 3em;
+}
+
+.fblock-title {
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 0 10px;
+}
+
+.field-requirements-list  .field-name-field-title  {
+    font-size: 22px;
+}
+
+.views-field-field-tradition .field-content.sub-tradition {
+    color: red;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+.field-content.sub-tradition {
+    text-align: center;
+}
+
+.houses-img > img {
+    float: left;
+}
+
+.houses > img {
+    position: relative;
+float: left;
+top: 15px;
+}
+
+.view-page-footer-block .views-row {
+    display: inline-block;
+    padding: 0 60px 35px 0;
+}
+
+.view-page-footer-block  .views-field.views-field-field-image img{
+    margin-top: -50px;
+    overflow: visible;
+    width: 150px;
+}
+.orange-button, .green-button {
+    width: 180px;
+    height: 90px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    line-height: 1em;
+    text-align: center;
+}
+.green-button {
+    background-color: #419185;
+}
+
+.color-button {
+    margin-top: 25px;
+}
+
+.color-button .views-field-field-page-reference {
+    padding-top: 15px;
+}
+.orange-button {
+    background-color: #db7743;
+}
+
+.orange a, .orange a:hover, .green a, .green a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.view-submissions .first.last{
+    border: 5px solid #ffffff;
+    border-radius: 8px;
+}
+.view-submissions .view-content{padding-left: 60px; padding-top: 40px}
+.view-submissions .views-row{float: left;width: 205px; margin-right: 20px; }
+.view-submissions .views-row .views-field-field-image{margin-bottom: 5px}
+.view-submissions img {
+    border-radius: 8px;
+    max-width: none;
+}
+
+.view-submissions .item-list > ul {
+    margin: 0px;    padding: 0;
+}
+
+.sub-green, .sub-red {
+    font-size: 3em;
+}
+
+.sub-red {
+    color: #ef3f4a;
+}
+
+.sub-green {
+    color: #419185;
+}
+
+.desc, .pdf {
+    margin-top: 10px;
+    display: block;
+}
+
+.music {
+    display: none;
+}
+.music-right .music {
+    display: block;
+}
+
+.music-right > audio {
+    padding: 60px 0;
+}
+
+
+.field-when-and-where .first .field.field-name-field-button.field-type-text.field-label-hidden {
+    background-color: #ef3f4a;
+    border-radius: 7px;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+}
+
+.field-when-and-where .last .field.field-name-field-button.field-type-text.field-label-hidden {
+    background-color: #419185;
+    border-radius: 7px;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+}
+
+.field-when-and-where .field.field-name-field-description.field-type-text-long.field-label-hidden {
+    height: 50px;
+}
+
+
+#block-block-3 {
+    background-color: #4bbe95;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 5px 10px;
+    text-align: center;
+    width: 180px;
+    float: right;
+    clear: left;
+    margin-right: 20px
+}
+
+#block-block-3 a, #block-block-3 a:hover, #block-block-3 a:active {
+    color: #FFFFFF;
+}
+
+#views-exposed-form-search-page select{
+    width: 130px;
+}
+
+#views-exposed-form-search-page #edit-submit-search {
+    background-color: #851f83;
+    border: medium none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 10px;
+    width: 70px;
+}
+
+.views-exposed-widgets label {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.views-exposed-widgets option {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.views-exposed-widgets:hover option:hover {
+    color: #000000;
+    background-color: #7ebfa2;
+}
+
+.view-search .field-content img {
+    border-radius: 8px;
+}
+
+.view-search .field-content > a {
+    border: 4px solid #ffffff;
+    border-radius: 8px;
+    display: block;
+}
+
+.view-header-title {
+    font-family: "Schoolbell",cursive,bold;
+    color: #ef3f4a;
+    font-size: 3em;
+    padding-bottom: 15px;
+}
+
+.view-header-title .green {
+    font-family: "Schoolbell",cursive,bold;
+    color: #7ebfa2;
+}
+
+.view-search .view-content {
+    border-left-color: #419185;
+    border-left-style: dotted;
+    padding-left: 25px;
+}
+.view-search .views-row{float: left; width: 160px; margin-right: 22px}
+.view-search .views-field-field-tradition .field-content{
+    color: #d55b48;
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    padding-left: 14px;
+}
+
+.group-left-wrap.field-group-div, .group-right-wrap.field-group-div {
+    display: inline-block;
+}
+.req li {
+    float: left;
+    margin-left: 150px;
+    margin-bottom: 30px;
+}
+
+.req .field-name-field-title {
+    color: #ef3f4a;
+}
+
+.group-right-wrap.field-group-div {
+    margin: 0 0 0 20px;
+    vertical-align: middle;
+}
+
+.req li:nth-child(4){
+    margin-left: 133px;
+}
+
+.page-wie #block-block-1 {
+position: absolute;
+right: 0px;
+top: 0;
+}
+
+.page-wie .houses > img {
+position: relative;
+float: left;
+top: 12px;
+left: 291px;
+}
+
+.view-search tr td {
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+.view-over-kerf .view-header {
+    border-bottom: #419185 dotted;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+.view-over-kerf .view-content {
+    padding-top: 25px;
+}
+
+.view-over-kerf .node-title {
+    display: none;
+}
+body.page-over-kerf {background: #fcf3da !important}
+.page-over-kerf #page-title {
+    font-family: "Schoolbell",cursive,bold;
+    font-size: 4em;
+    padding-bottom: 25px;
+    padding-left: 60px
+}
+.section-over-kerf #content{padding-left: 0}
+.section-over-kerf .view-header .node-page{padding-left: 60px;}
+.section-over-kerf  #top,.section-over-kerf .fleft{padding-left: 60px}
+.section-over-kerf .houses > img {
+position: absolute;
+top: 15px;
+right: 0;
+}
+.views-field-title .field-content > a {
+    color: #ef3f4a;
+    pointer-events: none;
+    font-size: 2em;
+    font-family: "Schoolbell",cursive,bold;
+}
+.views-field-title .field-content > a:hover {
+    color: #ef3f4a;
+    pointer-events: none;
+    font-size: 2em;
+    font-family: "Schoolbell",cursive,bold;
+}
+
+.view-over-kerf .view-content .views-row {
+    border-bottom: #419185 dotted;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    display: inline-block;
+}
+.views-field-field-kerf-image{display: none;}
+.view-over-kerf .kerf-title{color: #ef3f4a;pointer-events: none;font-size: 2em;font-family: "Schoolbell",cursive,bold;}
+.view-over-kerf .kerf-title a{color: #ef3f4a;}
+.view-over-kerf .fleft{float: left;width: 200px; margin-right: 20px}
+.view-over-kerf .fryt {
+    float: right;
+    width: 740px
+}
+.kerf-body{padding-top: 33px}
+
+.view-over-kerf .view-content .views-row-last{border-bottom: 0}
+
+#top img {
+    opacity: 0.4;
+}
+
+#top a.active img {
+    opacity: 1;
+}
+
+#content{min-height: 400px}
+.col-md-offset-1,#content{margin: 0 !important; padding:0;}
+.col-md-11{width: 100% !important; padding: 0 !important}
+.row{margin-right: 0 !important; margin-left: 0 !important}
+#block-views-promo-block-block .view-content{max-width: 960px; margin: 0 auto}
+.field-tradition .field-content,
+.view-tradition-home  .body .field-content,
+.field-music {padding-left: 60px}
+.view-tradition-home .body p:first-child img{margin-left: 10px}
+.view-tradition-home  .col-md-offset-3 {margin-left: 0%;}
+.view-tradition-home  .col-md-7{margin: 0 auto;float: none;}
+.field-tradition .field-content{
+    font-family: 'Schoolbell', cursive, bold;
+    font-size: 56px;
+    color: rgb(222, 30, 33);
+    margin-bottom: 31px
+}
+.view-tradition-home  .field-when-and-where li {float: left;width: 47%;}
+.view-tradition-home  .field-when-and-where li.last{margin-left: 5%} 
+
+.view-tradition-home  .field-when-and-where  .field-collection-item-field-when-and-where .field-name-field-title {color: #ef3f4a}
+.view-tradition-home  .field-when-and-where  .last .field-collection-item-field-when-and-where .field-name-field-title {color: #419185}
+.view-tradition-home  .field-when-and-where  .field-collection-item-field-when-and-where .field-name-field-description{ font-size: 16px}
+
+.section-contact #content{padding-left: 60px;}
+.page__title{font-family: 'Schoolbell', cursive, bold;font-size: 56px;color: rgb(222, 30, 33);margin-bottom: 31px}
+.contact-form {margin-bottom: 40px}
+.contact-form .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
+.contact-form label {width: 160px;font-weight: normal;float: left;}
+.contact-form .form-textarea-wrapper,.contact-form  .form-text{width: 630px; float: left;}
+.form-submit
+{background-color: #ef3f4a;
+border: 0;
+border-radius: 7px;
+color: #ffffff;
+display: inline-block;
+margin: 0 auto;
+padding: 5px 10px;
+text-align: center;}
+
+
+.entityform {margin-bottom: 40px}
+.entityform .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
+.entityform label {width: 160px;font-weight: normal;float: left;}
+.entityform .form-select{width: 270px;}
+.entityform .image-widget-data .form-submit,.entityform .image-widget-data  .form-file{float: left;}
+.entityform .form-textarea-wrapper,.entityform .form-text{width: 630px; float: left;}
+
+.page-eform-competition-confirm #content{padding-left: 60px; padding-bottom: 40px}
+
+
+
+.section-wie .view-header-title{padding-left: 60px; margin-bottom: 40px}
+body.one-sidebar .sidebars{
+float: left;
+width: 150px;
+margin-left: 60px;
+}
+body.one-sidebar  #content
+ {float: right !important;width: 735px !important;padding-left: 0}
+
+ .node-type-page #content{padding-left: 60px}
+
+ #block-views-promo-block-block .views-row{padding: 8px 15px; float: left}
+ #block-views-promo-block-block .views-row-first{padding-left: 0px !important;}
+#block-views-promo-block-block .views-row-last{padding-right: 0px !important;}
+
+body.page-eform #content{padding-left: 60px}
