@@ -22,7 +22,7 @@
         }
     };
     $(document).ready(function () {
-        $("div:contains('Zing Ze!')").each(function () {
+        $(".sitename:contains('Zing Ze!')").each(function () {
             $(this).html($(this).html().replace("Zing", "<span class='name-first'>Zing</span>"));
             $(this).html($(this).html().replace("Ze!", "<span class='name-second'>Ze!</span>"));
         });
@@ -101,7 +101,7 @@
         var brwsrWinW = parseInt($(window).width());
         $('#page').css({
             'width':brwsrWinW,
-            'overflow-x':'hidden',
+            'overflow-x':'hidden'
         })
 
         $( ".row-by-four .views-row:nth-child(4n+4)" ).addClass( "nopad-r" );
@@ -119,6 +119,25 @@
 
         colorify($els);
 
+        //wrap agenda to link
+        $('.agenda-link').hide();
+        $('.agenda-link').find('a').each(function(){
+            var links = $(this).attr('href');
+            var td = $(this).parents('td');
+            $(td).wrapInner('<a href="' + links + '"></a>');
+        });
+
+        //Style music title
+        var title = $('.field-collection-item-field-music').find('.field-name-field-title').find('.field-item').text();
+        var title_cut = title.slice(0, 3);
+        var title_cut_end = title.slice(3);
+        var new_title = '<span style="color: #ef3f4a">' + title_cut + '</span>' + title_cut_end;
+        $('.field-collection-item-field-music').find('.field-name-field-title').find('.field-item').replaceWith('<div class="field-item even">' + new_title + '</div>');
+
+
+        //add Zelf op pad gaan as title
+        var zelf = '<p class="zelf"><span style="color: #ef3f4a">Zelf</span><span> op pad<span style="color: #ef3f4a">gaan?</span></span></p><p class="descr">Wat heb je nodig om op pad te gaan? Hieronder vind je de benodigdheden:</p>';
+        $('.field-requirements-list ').prepend(zelf);
 
         $(function() {
             $('a[href*=#]:not([href=#])').click(function() {

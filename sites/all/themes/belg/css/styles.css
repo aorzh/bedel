@@ -710,6 +710,28 @@ right: 0;
     font-family: "Schoolbell",cursive,bold;
 }
 
+.view-shows-teaser td a {
+    text-decoration: none;
+}
+
+.view-shows-teaser td .views-field-body {
+    color: #000000;
+}
+
+.zelf {
+    text-align: left;
+    color: #419185;
+    font-size: 3em;
+    padding-left: 60px;
+    font-family: "Schoolbell",cursive,bold;
+}
+
+p.descr {
+    text-align: left;
+    padding-left: 60px;
+    padding-bottom: 25px;
+}
+
 .view-over-kerf .view-content .views-row {
     border-bottom: #419185 dotted;
     padding-bottom: 25px;
