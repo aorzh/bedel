@@ -28,11 +28,13 @@ foreach ($data as $value) {
     $item_id = $value['raw']['value'];
 }
 $collection = field_collection_item_load($item_id);
-$uri = $collection->field_audio['und'][0]['uri'];
+if (isset($collection->field_audio['und'][0]['uri']) && !empty($collection->field_audio['und'][0]['uri'])) {
+    $uri = $collection->field_audio['und'][0]['uri'];
 
-$url = file_create_url($uri);
-if ($row->field_field_music) {
-    print '<div class="music"><audio controls><source src="' . $url . '"></audio></div>';
+    $url = file_create_url($uri);
+    if ($row->field_field_music) {
+        print '<div class="music"><audio controls><source src="' . $url . '"></audio></div>';
+    }
 }
 ?>
 <?php print $output; ?>

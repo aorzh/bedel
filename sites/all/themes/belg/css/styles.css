@@ -141,13 +141,16 @@ max-width: 738px;
 }
 
 .view-main-traditions .views-field-php > span {
-    background-color: #40af49;
-    border-radius: 8px;
-    margin: 10px;
-    padding: 8px;
+background-color: #40af49;
+border-radius: 8px;
+margin: 10px;
+padding: 5px 8px;
+font-size: 12px;
 }
 .view-main-traditions .views-field-php a {
     color: #FFFFFF;
+    font-weight: 200;
+    text-decoration: underline; 
 }
 
 .view-main-traditions .views-field {}
@@ -214,7 +217,17 @@ top: 47px;
     width: 2px;
 }
 
-.views-field-field-date {
+/**
+FRONT PAGE
+**/
+.welcome-section{margin-top: 40px}
+.welcome-section .col-md-offset-3 {
+width: 960px;
+margin: 0 auto !Important;
+float: none;
+}
+.welcome-section .col-md-offset-3 .view-shows-teaser{margin-left: 60px}
+.views-field-field-date, .node-shows .field-name-field-date {
     border-radius: 100%;
     width: 75px;
     height: 75px;
@@ -302,6 +315,7 @@ span.date-display-single {
 .show-title .red {
     color: #639a1f;
 }
+
 
 .border-bottom {
     border-bottom: 1px solid #352417;
@@ -475,12 +489,11 @@ top: 15px;
     color: #FFFFFF;
     text-decoration: none;
 }
-
 .view-submissions .first.last{
     border: 5px solid #ffffff;
     border-radius: 8px;
 }
-.view-submissions .view-content{padding-left: 60px; padding-top: 40px}
+.view-submissions .view-content{padding-left: 60px; padding-top: 20px}
 .view-submissions .views-row{float: left;width: 205px; margin-right: 20px; }
 .view-submissions .views-row .views-field-field-image{margin-bottom: 5px}
 .view-submissions img {
@@ -503,6 +516,8 @@ top: 15px;
 .sub-green {
     color: #419185;
 }
+#block-views-submissions-block .view-header{padding-left: 45px; margin-top: 30px}
+#block-views-submissions-block .sub-green, #block-views-submissions-block .sub-red {font-size: 60px;}
 
 .desc, .pdf {
     margin-top: 10px;
@@ -630,12 +645,18 @@ top: 15px;
 }
 
 .group-left-wrap.field-group-div, .group-right-wrap.field-group-div {
-    display: inline-block;
+    float: left;
+}
+.field-content.req{padding-left: 20px}
+.field-content.req .col-md-10 {
+width: 100%;
 }
 .req li {
     float: left;
-    margin-left: 150px;
-    margin-bottom: 30px;
+    width: 50%;
+    min-height: 100px;
+   /* margin-left: 150px;
+    margin-bottom: 30px;*/
 }
 
 .req .field-name-field-title {
@@ -645,10 +666,11 @@ top: 15px;
 .group-right-wrap.field-group-div {
     margin: 0 0 0 20px;
     vertical-align: middle;
+    text-align: left;
 }
 
 .req li:nth-child(4){
-    margin-left: 133px;
+/*    margin-left: 133px;*/
 }
 
 .page-wie #block-block-1 {
@@ -787,7 +809,7 @@ p.descr {
 .contact-form {margin-bottom: 40px}
 .contact-form .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
 .contact-form label {width: 160px;font-weight: normal;float: left;}
-.contact-form .form-textarea-wrapper,.contact-form  .form-text{width: 630px; float: left;}
+.contact-form .form-textarea-wrapper,.contact-form  .form-text{width: 630px; float: left; font-size: 12px}
 .form-submit
 {background-color: #ef3f4a;
 border: 0;
@@ -799,13 +821,15 @@ padding: 5px 10px;
 text-align: center;}
 
 
-.entityform {margin-bottom: 40px}
+.entityform {margin-bottom: 40px;font-size: 12px}
 .entityform .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
-.entityform label {width: 160px;font-weight: normal;float: left;}
+label{font-size: 12px}
+.entityform label,.entityform  fieldset legend {width: 240px;font-weight: normal;float: left; font-size: 12px; border-bottom: 0}
+.entityform  .field-type-datetime  .description{display: none;}
 .entityform .form-select{width: 270px;}
+.entityform #edit-field-image .description{margin-left: 240px}
 .entityform .image-widget-data .form-submit,.entityform .image-widget-data  .form-file{float: left;}
-.entityform .form-textarea-wrapper,.entityform .form-text{width: 630px; float: left;}
-
+.entityform .form-textarea-wrapper,.entityform .form-text,.entityform  fieldset .fieldset-wrapper{width: 530px; float: left;}
 .page-eform-competition-confirm #content{padding-left: 60px; padding-bottom: 40px}
 
 

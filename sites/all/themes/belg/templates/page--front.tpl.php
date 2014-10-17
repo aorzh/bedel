@@ -133,7 +133,8 @@
                         <?php $block = block_load('view', 'shows_teaser-block');
                         $shows_block = views_embed_view('shows_teaser', $display_id = 'block');
                         print render($shows_block); ?>
-                        <div class="more"><a class="slide-btn" href="#more">» Alle activiteiten</a></div>
+                        <!--<div class="more"><a class="slide-btn" href="#more">» Alle activiteiten</a></div>-->
+                        <div class="more"><a class="slidebtn" href="activiteiten">» Alle activiteiten</a></div>
                     </div>
             </div>
             <div class="row pdf-section">

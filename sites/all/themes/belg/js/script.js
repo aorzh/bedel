@@ -46,19 +46,19 @@
         });
         $('.view-shows-teaser').find('table').addClass("table");
 
-        $('.view-shows-teaser').find('.row-2').next('tr').addClass('slide').attr('id', 'more');
+        $('.view-shows-teaser.view-display-id-page').find('.row-2').next('tr').addClass('slide').attr('id', 'more');
 
-        $('.slide').hide().nextAll('tr').hide();
-        $(".slide-btn").toggle(
-            function () {
-                $('.slide').slideDown(500).nextAll('tr').show();
-                $(this).html('» Sluiten');
-            },
-            function () {
-                $('.slide').slideUp(300).nextAll('tr').hide();
-                $(this).html('» Alle activiteiten');
-            }
-        );
+       // $('.view-shows-teaser.view-display-id-page .slide').hide().nextAll('tr').hide();
+        //$(".view-shows-teaser.view-display-id-page .slide-btn").toggle(
+        //    function () {
+        //        $('.slide').slideDown(500).nextAll('tr').show();
+        //        $(this).html('» Sluiten');
+        //    },
+        //    function () {
+        //       $('.slide').slideUp(300).nextAll('tr').hide();
+        //        $(this).html('» Alle activiteiten');
+        //    }
+        //);
         $('#block-views-promo-block-block').find('table').addClass('table');
 
         $('.pdf').parents('.views-row').addClass('green');
