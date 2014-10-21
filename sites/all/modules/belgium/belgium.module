@@ -3,13 +3,115 @@
 /**
  * Implement hook_init().
  */
-/*
-function belgium_init() {
-    $path = drupal_get_path('module', 'belgium');
-    $path_to_js = $path . '/js/script.js';
-    drupal_add_js('https://www.google.com/jsapi');
-    drupal_add_js($path_to_js);
-}*/
+define('BELGIUM_PERMISSION', 'administer belgium');
+
+/**
+ * Implement hook_help().
+ * @param $path
+ * @param $arg
+ * @return string
+ */
+function belgium_help($path, $arg) {
+    switch ($path) {
+        case "admin/help#belgium":
+            return '<p>' . t("Create custom map on http://www.image-maps.com") . '</p>';
+            break;
+    }
+}
+
+
+/**
+ * Implement hook_permission().
+ * @return array
+ */
+function belgium_permission() {
+    return array(
+        BELGIUM_PERMISSION => array(
+            'title' => t('Administer Belgium module'),
+            'description' => t('Perform administration tasks for Belgium module.'),
+        ),
+    );
+}
+
+/**
+ * Implement hook_menu().
+ * @return string
+ */
+function belgium_menu() {
+    $items = array();
+    $items['admin/config/user-interface/map'] = array(
+        'title' => 'Map',
+        'description' => 'Custom map',
+        'access arguments' => array('administer belgium'),
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('belgium_map_form'),
+    );
+
+    $items['ajax/get_info'] = array(
+        'page callback' => 'belgium_tradition_info',
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+    );
+    return $items;
+}
+
+/**
+ * @param $form
+ * @param $form_state
+ */
+function belgium_map_form($form, &$form_state) {
+    $descr = t('Go to <a href="http://www.image-maps.com"> http://www.image-maps.com</a>, upload your map and follow instructions. <br /> Get your http code and paste to this area.');
+
+    $form['map'] = array(
+        '#type' => 'textarea',
+        '#description' => $descr,
+        '#default_value' => variable_get('map_source') ? variable_get('map_source') : '',
+    );
+    $form['city_population'] = array(
+        '#type' => 'fieldset',
+        '#tree' => TRUE,
+    );
+    $city_names = belgium_terms('City');
+    foreach ($city_names as $key => $city) {
+        $form['city_population'][$key] = array(
+            '#type' => 'textfield',
+            '#title' => $city,
+            '#size' => 15,
+            '#default_value' => variable_get('population_' . $key) ? variable_get('population_' . $key) : '',
+        );
+    }
+
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Save',
+    );
+
+    return $form;
+}
+
+/**
+ * Implement hook_validate().
+ * @param $form
+ * @param $form_state
+ * @return mixed
+ */
+function belgium_map_form_validate($form, $form_state) {
+//
+    return $form;
+}
+
+function belgium_map_form_submit($form, $form_state) {
+    $map = $form_state['values']['map'];
+    variable_set('map_source', $map);
+
+    $population = $form_state['values']['city_population'];
+
+    foreach ($population as $key => $value) {
+        variable_set("population_" . $key, (int)trim($value));
+    }
+    drupal_set_message(t('Saved.'));
+    return $form;
+}
 
 /**
  * Implement hook_block_info().
@@ -43,15 +145,101 @@ function belgium_block_view($delta = '') {
     return $block;
 }
 
+function belgium_terms($voc_name) {
+    $vid = '';
+    switch ($voc_name) {
+        case 'City':
+            $vid = 3;
+            break;
+        case 'Traditions':
+            $vid = 2;
+            break;
+        default:
+            break;
+    }
+    $tree = taxonomy_get_tree($vid);
+    $names = array();
+    foreach ($tree as $name) {
+        $names[$name->tid] = $name->name;
+
+    }
+    return $names;
+}
+
+/**
+ *
+ */
+function belgium_tradition_info() {
+    $tradition_id = $_POST['trad_id'];
+
+
+    $city_names = belgium_terms('City');
+    $sum = array();
+    foreach ($city_names as $key => $city) {
+        $singers_sum = 0;
+        //$population = variable_get('population_' . $key);
+
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'entityform')
+            ->entityCondition('bundle', 'competition')
+            ->fieldCondition('field_tradition', 'tid', $tradition_id, '=', 0)
+            ->fieldCondition('field_city', 'tid', $key, '=', 0);
+        $results = $query->execute();
+        if (isset($results['entityform'])) {
+            foreach ($results['entityform'] as $result) {
+                $submission_wrapper = entity_metadata_wrapper('entityform', $result->entityform_id);
+                $singers = $submission_wrapper->field_aantal_zangers->value();
+                $field_city = $submission_wrapper->field_city->value();
+                $singers_sum = $singers + $singers_sum;
+            }
+        }
+        if (isset($singers_sum) && $singers_sum != NULL) {
+            $push = array($field_city->name => $singers_sum);
+            array_push($sum, $push);
+        } else {
+            $push = array($city => 0);
+            array_push($sum, $push);
+        }
+    }
+    $return = array();
+    foreach ($sum as $child) {
+        $return = array_merge($return, $child);
+    }
+    arsort($return);
+    $data = $return;
+    drupal_json_output($data);
+
+}
+
 /**
  * @return mixed
  */
 function _belgium_render_map() {
     $path = drupal_get_path('module', 'belgium');
     $path_to_js = $path . '/js/script.js';
-    drupal_add_js('https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["geochart"]}]}');
-    drupal_add_js('https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["geomap"]}]}');
+    $path_to_css = $path . '/css/style.css';
+    $image_resize = $path . '/js/imageMapResizer.min.js';
+    $light = $path . '/js/jquery.maphilight.js';
+    $city_names = belgium_terms('City');
+    $traditions = belgium_terms('Traditions');
+    $population = array();
+
+    foreach ($city_names as $key => $city) {
+        $population[$city] = variable_get("population_" . $key);
+    }
+
+    drupal_add_js(array('belgium' => array(
+        'city' => $city_names,
+        'traditions' => $traditions,
+        'population' => $population,
+
+    )), 'setting');
+
     drupal_add_js($path_to_js);
-    $output = '<div id="regions_div" style="width: 900px; height: 500px;"></div>';
+    drupal_add_js($image_resize);
+    drupal_add_js($light);
+    drupal_add_css($path_to_css);
+
+    $output = variable_get('map_source');
     return $output;
 }

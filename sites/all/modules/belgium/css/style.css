@@ -1,0 +1,10 @@
+.city-wrap {
+    padding-top: 100px;
+    float: right;
+}
+.map-wrap {
+    display: inline-block !important;
+}
+map .active {
+    display: none;
+}

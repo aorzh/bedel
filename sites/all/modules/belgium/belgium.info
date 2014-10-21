@@ -1,5 +1,9 @@
 name = Belgium map integration
 description = Google Maps integration
+
+configure = admin/config/user-interface/map
+dependencies[] = entityform
+
 package = Custom
 core = 7.x
 version = "7.x-1.0"
