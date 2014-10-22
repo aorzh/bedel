@@ -52,6 +52,12 @@ function belgium_menu() {
         'type' => MENU_CALLBACK,
         'access arguments' => array('access content'),
     );
+
+    $items['ajax/tooltip'] = array(
+        'page callback' => 'belgium_tooltip',
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+    );
     return $items;
 }
 
@@ -166,12 +172,41 @@ function belgium_terms($voc_name) {
     return $names;
 }
 
+function belgium_tooltip() {
+    $tradition_id = $_POST['tradition_id'];
+    $town = ucfirst($_POST['town']);
+    $singers_sum = 0;
+    $tid = db_select('taxonomy_term_data', 'td')
+        ->fields('td', array('tid'))
+        ->condition('td.name', $town)
+        ->execute()
+        ->fetchField();
+
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'entityform')
+        ->entityCondition('bundle', 'competition')
+        ->fieldCondition('field_tradition', 'tid', $tradition_id, '=', 0)
+        ->fieldCondition('field_city', 'tid', $tid, '=', 0);
+    $results = $query->execute();
+    if (isset($results['entityform'])) {
+        foreach ($results['entityform'] as $result) {
+            $submission_wrapper = entity_metadata_wrapper('entityform', $result->entityform_id);
+            $singers = $submission_wrapper->field_aantal_zangers->value();
+            $singers_sum = $singers + $singers_sum;
+
+        }
+    }
+    $output = '<b>' . $town . '</b> <br /> <p>- ' . $singers_sum . ' deelnames</p>';
+
+
+    drupal_json_output($results);
+}
+
 /**
  *
  */
 function belgium_tradition_info() {
     $tradition_id = $_POST['trad_id'];
-
 
     $city_names = belgium_terms('City');
     $sum = array();
@@ -220,6 +255,14 @@ function _belgium_render_map() {
     $path_to_css = $path . '/css/style.css';
     $image_resize = $path . '/js/imageMapResizer.min.js';
     $light = $path . '/js/jquery.maphilight.js';
+
+    $tooltip_js = $path . '/js/jquery.qtip.min.js';
+    $tooltip_js_map = $path . '/js/jquery.qtip.min.js.map';
+    //$tooltip_js_img = $path . '/js/imagesloaded.pkg.min.js';
+    //$tooltip_js_img_map = $path . '/js/imagesloaded.pkg.min.js.map';
+
+    $tooltip_css = $path . '/css/jquery.qtip.min.css';
+
     $city_names = belgium_terms('City');
     $traditions = belgium_terms('Traditions');
     $population = array();
@@ -234,6 +277,12 @@ function _belgium_render_map() {
         'population' => $population,
 
     )), 'setting');
+
+    drupal_add_css($tooltip_css);
+    drupal_add_js($tooltip_js);
+    drupal_add_js($tooltip_js_map);
+    //drupal_add_js($tooltip_js_img);
+    //drupal_add_js($tooltip_js_img_map);
 
     drupal_add_js($path_to_js);
     drupal_add_js($image_resize);

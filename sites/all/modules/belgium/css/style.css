@@ -1,10 +1,81 @@
 .city-wrap {
-    padding-top: 100px;
     float: right;
 }
 .map-wrap {
     display: inline-block !important;
+    margin: 0 30px;
 }
 map .active {
     display: none;
+}
+#block-belgium-map ul li {
+    list-style-type: none;
+}
+
+/*
+#block-belgium-map {
+    margin: 0 auto;
+    width: 960px;
+}*/
+.trad-wrap, .map-wrap, .city-wrap {
+    float: left;
+}
+
+.trad-wrap ul, .city-wrap ul {
+    width: 230px;
+}
+
+.trad-wrap li, .city-wrap li{
+    padding: 15px 0;
+    border-top: 1px solid #bfbfbf;
+    background-color: #edf9f4;
+}
+
+.trad-wrap li.active {
+    background-color: #FFFFFF;
+}
+
+.trad-wrap li a, .trad-wrap li a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+.arrow {
+    color: #4bb454;
+    padding-left: 10px;
+}
+
+.number {
+    background-color: #ffffff;
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    height: 35px;
+    margin: 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 35px;
+}
+
+.city-wrap li {
+    border: solid 1px #FFFFFF;
+}
+
+.city-wrap li a {
+    color: #000000;
+    pointer-events: none;
+    font-family: "Schoolbell",cursive,bold;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.points {
+    display: block;
+    text-align: start;
+    font-weight: 400;
+    color: #000000;
+}
+
+.point-left {
+    float: left;
 }

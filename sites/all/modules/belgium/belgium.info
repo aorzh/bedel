@@ -1,5 +1,5 @@
 name = Belgium map integration
-description = Google Maps integration
+description = Custom Maps integration
 
 configure = admin/config/user-interface/map
 dependencies[] = entityform

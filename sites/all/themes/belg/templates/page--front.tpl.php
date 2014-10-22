@@ -117,8 +117,12 @@
             </div>
         </div>
         <div class="row map-section">
-                    <div class="col-md-8 col-md-offset-3">
-                        map
+                    <div class="col-md-9 col-md-offset-2">
+                        <?php
+                        $block = block_load('belgium', 'map');
+                        $city_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+                        print render($city_block);
+                        ?>
                     </div>
                 </div>
                 <div class="row welcome-section">
