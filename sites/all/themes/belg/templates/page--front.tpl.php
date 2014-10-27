@@ -117,23 +117,33 @@
             </div>
         </div>
         <div class="row map-section">
-                    <div class="col-md-9 col-md-offset-2">
+            <div class="header-title border-bottom">
+                <div class="show-title" style="color: #533d27">Wie <span style="color: #7ebfa2">zingt</span> het meest?</div>
+                <div class="zwelkom"><img style="width: 64px" src="/sites/all/themes/belg/images/cutted/m.png" /></div>
+            </div>
+                    <div class="show-content col-md-9 col-md-offset-2">
+                        <div class="btns cl">
+                            <?php $block = block_load('block', '1');
+                            $submit_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+                            print render($submit_block);
+                            ?>
+                            <?php $block = block_load('block', '3');
+                            $submit_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+                            print render($submit_block);?>
+                        </div>
                         <?php
-                        $block = block_load('belgium', 'map');
-                        $city_block = _block_get_renderable_array(_block_render_blocks(array($block)));
-                        print render($city_block);
+                        $block_map = block_load('belgium', 'map');
+                        $render_block_map = _block_get_renderable_array(_block_render_blocks(array($block_map)));
+                        print render($render_block_map);
                         ?>
                     </div>
                 </div>
                 <div class="row welcome-section">
-                    <div class="col-md-7 col-md-offset-2 border-bottom">
+                    <div class="header-title border-bottom">
                         <div class="show-title">Noteer in je <span class="red">agenda</span>:</div>
-                    </div>
-                    <div class="col-md-2">
                         <div class="zwelkom"><img src="/sites/all/themes/belg/images/cutted/zwelkom.png"></div>
                     </div>
-
-                    <div class="col-md-7 col-md-offset-3">
+                    <div class="show-content  col-md-9 col-md-offset-2">
                         <?php $block = block_load('view', 'shows_teaser-block');
                         $shows_block = views_embed_view('shows_teaser', $display_id = 'block');
                         print render($shows_block); ?>
@@ -145,13 +155,12 @@
                 <div class="col-md-7 col-md-offset-4">
                     <?php 
                     //$block2 = block_load('view', 'page_footer_block-block');
-                    //$show_block = views_embed_view('page_footer_block', $display_id = 'block');
+                    echo views_embed_view('page_footer_block', $display_id = 'block');
                     //print render($show_block); ?>
                 </div>
             </div>
 
     </div>
-
     <?php print render($page['footer']); ?>
 
 </div>

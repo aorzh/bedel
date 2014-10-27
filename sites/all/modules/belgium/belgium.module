@@ -58,6 +58,23 @@ function belgium_menu() {
         'type' => MENU_CALLBACK,
         'access arguments' => array('access content'),
     );
+
+    $items['ajax/tradition'] = array(
+        'title' => t(''),
+        'page callback' => 'belgium_tradition_generate',
+        'page arguments' => array(1),
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+    );
+
+    $items['ajax/get_tradition'] = array(
+        'title' => t(''),
+        'page callback' => 'belgium_tradition_get',
+        'page arguments' => array(1),
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+    );
+
     return $items;
 }
 
@@ -175,12 +192,14 @@ function belgium_terms($voc_name) {
 function belgium_tooltip() {
     $tradition_id = $_POST['tradition_id'];
     $town = ucfirst($_POST['town']);
+
     $singers_sum = 0;
     $tid = db_select('taxonomy_term_data', 'td')
         ->fields('td', array('tid'))
         ->condition('td.name', $town)
         ->execute()
         ->fetchField();
+    $population = variable_get("population_" . $tid);
 
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'entityform')
@@ -196,10 +215,14 @@ function belgium_tooltip() {
 
         }
     }
-    $output = '<b>' . $town . '</b> <br /> <p>- ' . $singers_sum . ' deelnames</p>';
 
 
-    drupal_json_output($results);
+    $points = ($singers_sum / $population)*100;
+
+    $output = '<b>' . $town . '</b> <br /> <p>- ' . $singers_sum . ' deelnames<br />- ' . round($points, 2) . ' punten</p>';
+
+
+    drupal_json_output($output);
 }
 
 /**
@@ -254,7 +277,8 @@ function _belgium_render_map() {
     $path_to_js = $path . '/js/script.js';
     $path_to_css = $path . '/css/style.css';
     $image_resize = $path . '/js/imageMapResizer.min.js';
-    $light = $path . '/js/jquery.maphilight.js';
+    $light = $path . '/js/jquery.maphilight.min.js';
+
 
     $tooltip_js = $path . '/js/jquery.qtip.min.js';
     $tooltip_js_map = $path . '/js/jquery.qtip.min.js.map';
@@ -291,4 +315,25 @@ function _belgium_render_map() {
 
     $output = variable_get('map_source');
     return $output;
+}
+
+/**
+ *
+ */
+function belgium_tradition_generate() {
+    $nid = $_POST['nid'];
+    $node = node_load($nid);
+    $name = strtolower($node->title);
+
+    drupal_json_output($name);
+}
+
+function belgium_tradition_get(){
+    $name = $_POST['trad_name'];
+    $termin = taxonomy_get_term_by_name($name);
+    $tid = '';
+    foreach($termin as $t) {
+        $tid = $t->tid;
+    }
+    drupal_json_output($tid);
 }

@@ -1,0 +1,55 @@
+footer table {
+    margin: 0 auto;
+}
+
+footer td {
+    padding: 0 20px;
+}
+
+.field-when-and-where table {
+    margin: 0 auto;
+}
+
+.when {
+    padding-right: 25px;
+}
+
+.when img, .where img {
+    width: 100px;
+    height: 100px;
+}
+
+.when .field-name-field-title {
+    color: #ef3f4a;
+}
+
+.where .field-name-field-title {
+    color: #419185;
+}
+
+.when .field-name-field-description, .where .field-name-field-description {
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+
+.when .field-name-field-button {
+    background-color: #ef3f4a;
+    border-radius: 7px;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+}
+
+.where .field-name-field-button {
+    background-color: #419185;
+    border-radius: 7px;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+}

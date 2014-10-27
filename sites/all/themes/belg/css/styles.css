@@ -28,6 +28,8 @@ body {
     font-family: 'Open Sans', sans-serif !important;
 }
 
+a:active, a:focus { outline: none; }
+
 #page {
     max-width: 100%;
 }
@@ -161,11 +163,11 @@ font-size: 12px;
 .view-main-traditions .views-row {
     float: left
 }
-.view-main-traditions .views-field-body{font-size: 11px}
+.view-main-traditions .views-field-body{font-size: 11px; width: 150px; margin:0 auto;}
 .view-main-traditions .views-field-field-tradition {
 margin-bottom: 0 !important;
 }
-#block-block-1 {
+#block-block-1 ,#block-block-1--2 {
 background-color: #851f83;
 border-radius: 8px;
 color: #ffffff;
@@ -220,7 +222,10 @@ top: 47px;
 /**
 FRONT PAGE
 **/
-.welcome-section{margin-top: 40px}
+.header-title{width: 960px; margin: 0 auto 30px; position: relative;}
+.header-title .zwelkom{position: absolute;right: 0; top: 0;}
+.show-content{width: 870px !important; margin: 0 auto !important;float: none !important;padding: 0 !important}
+.welcome-section{padding-top: 40px}
 .welcome-section .col-md-offset-3 {
 width: 960px;
 margin: 0 auto !Important;
@@ -244,22 +249,29 @@ float: none;
     display: table-cell;
     vertical-align: middle;
 }
-.first .col-first .views-field-field-date{
-    background-color: #639a1f;
+.map-section{background: #feefe8;min-height: 150px;padding-top: 25px; padding-bottom: 50px; }
+.map-section .header-title{height: 125px}
+.map-section .header-title .zwelkom{background: #feefe8;}
+.map-section .show-content{width: 870px}
+.map-section .header-title .show-title{position: relative;top: 35px;}
+.map-section .btns {overflow: hidden;width: 870px;}
+.map-section .btns > div{float: right !important; top: 0 !important}
+.map-section .btns > div a{font-weight: normal;color: #fff}
+.map-section .btns  #block-block-3 {
+width: 196px;
+margin-right: 0;
+font-size: 13px;
 }
+.row-by-two.views-row{width: 100% !important}
+.welcome-section .views-row{width: 430px;float:left;}
+.welcome-section .more{clear: both;}
+.view-shows-teaser .views-row .left{text-align: center;float: left;}
+.view-shows-teaser .views-row .right{float:left;width: 250px }
+.view-shows-teaser .views-row-odd .views-field-field-date{background-color: #639a1f;}
+.view-shows-teaser .views-row-even .views-field-field-date{background-color: #862084;}
 
-.first .col-last .views-field-field-date{
-    background-color: #862084;
-}
-
-.second .col-first .views-field-field-date{
-    background-color: #862084;
-}
-
-.second .col-last .views-field-field-date {
-    background-color: #639a1f;
-}
-
+.view-shows-teaser .even .views-row-odd .views-field-field-date{background-color: #862084;}
+.view-shows-teaser .even .views-row-even .views-field-field-date{background-color: #639a1f;}
 .show-day {
     font-size: 34px;
     font-style: normal;
@@ -273,24 +285,15 @@ span.date-display-single {
 
 .show-month {font-size: 14px;margin-top: -10px;font-weight: 300;text-transform: lowercase;}
 
-.first .col-first .views-field-field-tradition {
-    color: #639a1f;
-}
+.view-shows-teaser .views-row-odd .views-field-field-tradition {color: #639a1f;}
+.view-shows-teaser .views-row-even .views-field-field-tradition {color: #862084;}
 
-.first .col-last .views-field-field-tradition {
-    color: #862084;
-}
-
-.second .col-first .views-field-field-tradition {
-    color: #862084;
-}
-
-.second .col-last .views-field-field-tradition {
-    color: #639a1f;
-}
+.view-shows-teaser .even .views-row-even .views-field-field-tradition {color: #639a1f;}
+.view-shows-teaser .even .views-row-odd .views-field-field-tradition {color: #862084;}
 
 .views-field-field-tradition {
     font-size: 28px;
+    font-family: "Schoolbell",cursive,bold;
 }
 
 .view-shows-teaser .views-field-body {
@@ -322,20 +325,21 @@ span.date-display-single {
 }
 .welcome-section {
     background-color: #FFFFFF;
-    padding-bottom: 70px;
+    padding-bottom: 35px;
 }
-
+.welcome-section .show-content{width: 870px}
 .zwelkom > img {
     width: 160px;
 }
 
-.pdf-section, .map-section {
+.pdf-section {
     background-color: #fcf3da;
     min-height: 150px;
 }
 
 #footer {
     background-color: #FFFFFF;
+	padding: 20px 0 20px 0;
 }
 #block-views-promo-block-block table{
     border: none !important;
@@ -388,7 +392,7 @@ section.field-music {
 
 .music-left {
     float: left;
-    width: 200px;
+    width: 300px;
 }
 
 .music-right {
@@ -401,7 +405,7 @@ section.field-music {
 }
 
 .music-left .field-name-field-description .field-item {
-    width: 200px;
+    width: 280px;
     font-size: 14px;
     font-style: italic;
     font-weight: bold;
@@ -437,9 +441,11 @@ section.field-when-and-where li {
     color: red;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
+    text-align: left;
+    padding-left: 15px;
 }
-.field-content.sub-tradition {
-    text-align: center;
+.field-content.sub-tradition a{
+    color: #ef3f4a
 }
 
 .houses-img > img {
@@ -454,7 +460,7 @@ top: 15px;
 
 .view-page-footer-block .views-row {
     display: inline-block;
-    padding: 0 60px 35px 0;
+    padding: 0 60px 25px 0;
 }
 
 .view-page-footer-block  .views-field.views-field-field-image img{
@@ -464,7 +470,7 @@ top: 15px;
 }
 .orange-button, .green-button {
     width: 180px;
-    height: 90px;
+    height: 80px;
     border-radius: 8px;
     color: #FFFFFF;
     line-height: 1em;
@@ -475,7 +481,7 @@ top: 15px;
 }
 
 .color-button {
-    margin-top: 25px;
+    margin-top: -25px;
 }
 
 .color-button .views-field-field-page-reference {
@@ -522,6 +528,7 @@ top: 15px;
 .desc, .pdf {
     margin-top: 10px;
     display: block;
+    font-size: 12px
 }
 
 .music {
@@ -570,7 +577,7 @@ top: 15px;
     font-weight: 500;
     padding: 5px 10px;
     text-align: center;
-    width: 180px;
+    width: 195px;
     float: right;
     clear: left;
     margin-right: 20px
@@ -761,14 +768,14 @@ p.descr {
     display: inline-block;
 }
 .views-field-field-kerf-image{display: none;}
-.view-over-kerf .kerf-title{color: #ef3f4a;pointer-events: none;font-size: 2em;font-family: "Schoolbell",cursive,bold;}
+.view-over-kerf .kerf-title{color: #ef3f4a;pointer-events: none;font-size: 2em;font-family: "Schoolbell",cursive,bold; margin-bottom: 15px; width: 100%; }
 .view-over-kerf .kerf-title a{color: #ef3f4a;}
 .view-over-kerf .fleft{float: left;width: 200px; margin-right: 20px}
 .view-over-kerf .fryt {
     float: right;
     width: 740px
 }
-.kerf-body{padding-top: 33px}
+.kerf-body{padding-top: 48px; margin-left: 20px; }
 
 .view-over-kerf .view-content .views-row-last{border-bottom: 0}
 
@@ -806,10 +813,11 @@ p.descr {
 
 .section-contact #content{padding-left: 60px;}
 .page__title{font-family: 'Schoolbell', cursive, bold;font-size: 56px;color: rgb(222, 30, 33);margin-bottom: 31px}
-.contact-form {margin-bottom: 40px}
+.contact-form {padding-bottom: 70px}
 .contact-form .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
-.contact-form label {width: 160px;font-weight: normal;float: left;}
-.contact-form .form-textarea-wrapper,.contact-form  .form-text{width: 630px; float: left; font-size: 12px}
+.contact-form label {width: 160px;font-weight: normal;float: left;font-size: 14px}
+.contact-form .form-textarea-wrapper,.contact-form  .form-text{width: 630px; float: left; font-size: 14px}
+input,  select, textarea{padding: 3px}
 .form-submit
 {background-color: #ef3f4a;
 border: 0;
@@ -818,16 +826,20 @@ color: #ffffff;
 display: inline-block;
 margin: 0 auto;
 padding: 5px 10px;
-text-align: center;}
+text-align: center;
+font-size: 14px;}
+.form-item-copy{display: none;}
 
-
-.entityform {margin-bottom: 40px;font-size: 12px}
-.entityform .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
-label{font-size: 12px}
-.entityform label,.entityform  fieldset legend {width: 240px;font-weight: normal;float: left; font-size: 12px; border-bottom: 0}
+.entityform {padding-bottom: 70px;font-size: 12px}
+.pre-intructions{padding:20px 0;font-size: 14px}
+.entityform .form-item {clear: both;margin-bottom: 15px; overflow: hidden;font-size: 14px}
+.entityform .form-type-date-popup{margin-bottom: 0}
+.entityform .container-inline-date .date-padding {padding: 0;}
+label{font-size: 14px; font-weight: normal;}
+.entityform label,.entityform  fieldset legend {width: 260px;font-weight: normal;float: left; font-size: 14px; border-bottom: 0}
 .entityform  .field-type-datetime  .description{display: none;}
 .entityform .form-select{width: 270px;}
-.entityform #edit-field-image .description{margin-left: 240px}
+.entityform #edit-field-image .description{margin-left: 260px}
 .entityform .image-widget-data .form-submit,.entityform .image-widget-data  .form-file{float: left;}
 .entityform .form-textarea-wrapper,.entityform .form-text,.entityform  fieldset .fieldset-wrapper{width: 530px; float: left;}
 .page-eform-competition-confirm #content{padding-left: 60px; padding-bottom: 40px}
@@ -835,6 +847,8 @@ label{font-size: 12px}
 
 
 .section-wie .view-header-title{padding-left: 60px; margin-bottom: 40px}
+.views-exposed-form .views-exposed-widget {margin-bottom: 30px;}
+.views-field-field-naam-en-voornaam{color: #009390; padding-left: 15px; text-decoration: underline;}
 body.one-sidebar .sidebars{
 float: left;
 width: 150px;
@@ -850,3 +864,8 @@ body.one-sidebar  #content
 #block-views-promo-block-block .views-row-last{padding-right: 0px !important;}
 
 body.page-eform #content{padding-left: 60px}
+.node-page .field-name-body{padding-bottom: 70px}
+
+.img_overkerf { vertical-align: bottom; text-align: center; }
+.retie { margin-left: -20px; }
+.meerhout { margin-left: -18px; }

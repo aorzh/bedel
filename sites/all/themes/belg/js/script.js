@@ -84,18 +84,24 @@
         $('.view-header').after('<div id="top"></div>');
 
         $('.view-over-kerf').find('.views-row').each(function () {
-            new_id = $(this).find('.views-field-title').find('a').text().toLowerCase();
+            /* new_id = $(this).find('.views-field-title').find('a').text().toLowerCase(); */
+			new_id = $(this).find('.kerf-title').find('a').text().toLowerCase();
             imagePath = $(this).find('.views-field-field-kerf-image').find('img').attr('src');
 
-            $('#top').append('<a href="#' + new_id + '"><img src="' + imagePath + '"/>"' +
+            $('#top').append('<a href="#' + new_id + '"><img src="' + imagePath + '" class="img_overkerf ' + new_id + '" />' +
                 '</a>');
             $(this).attr('id', new_id);
         });
-
-        $('#top').find('a:first-child').addClass('active');
-        $('#top > a').click(function(){
-           $('#top').find('a.active').removeClass('.active');
-           $(this).toggleClass('active');
+		
+		$('#top > a').mouseover(function(){
+            if(!$(this).hasClass("active")){
+                $(this).find('img').css('opacity', 1);
+            }
+        });
+        $('#top > a').mouseleave(function(){
+            if(!$(this).hasClass("active")){
+                $(this).find('img').css('opacity', 0.4);
+            }
         });
 
         var brwsrWinW = parseInt($(window).width());
@@ -105,7 +111,7 @@
         })
 
         $( ".row-by-four .views-row:nth-child(4n+4)" ).addClass( "nopad-r" );
-        var 
+        /*var
 
         color = function(){
             return '#' + Math.floor(Math.random()*16777215).toString(16);
@@ -115,9 +121,9 @@
             els.each(function(){
                 $(this).css('background', color());
             });
-        };
+        };*/
 
-        colorify($els);
+        //colorify($els);
 
         //wrap agenda to link
         $('.agenda-link').hide();
@@ -136,7 +142,7 @@
 
 
         //add Zelf op pad gaan as title
-        var zelf = '<p class="zelf"><span style="color: #ef3f4a">Zelf</span><span> op pad<span style="color: #ef3f4a">gaan?</span></span></p><p class="descr">Wat heb je nodig om op pad te gaan? Hieronder vind je de benodigdheden:</p>';
+        var zelf = '<p class="zelf"><span style="color: #ef3f4a">Zelf</span><span> op pad <span style="color: #ef3f4a">gaan?</span></span></p><p class="descr">Wat heb je nodig om op pad te gaan? Hieronder vind je de benodigdheden:</p>';
         $('.field-requirements-list ').prepend(zelf);
 
         $(function() {
@@ -153,6 +159,12 @@
                 }
             });
         });
+
+       $('.tradition-btn').each(function(){
+           var col = $(this).attr('style');
+           $(this).parent('span').attr('style',col);
+       });
+
     });
 
 })(jQuery, Drupal, this, this.document);

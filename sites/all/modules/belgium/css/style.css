@@ -1,9 +1,8 @@
-.city-wrap {
-    float: right;
-}
+
 .map-wrap {
-    display: inline-block !important;
-    margin: 0 30px;
+display: inline-block !important;
+width: 390px !important;
+margin: 0 40px !important;
 }
 map .active {
     display: none;
@@ -20,9 +19,16 @@ map .active {
 .trad-wrap, .map-wrap, .city-wrap {
     float: left;
 }
-
-.trad-wrap ul, .city-wrap ul {
-    width: 230px;
+.city-wrap {
+    float: right;
+}
+.trad-wrap ul {
+    width: 215px;
+    padding-left: 0
+}
+.city-wrap ul {
+    width: 180px;
+    padding-left: 0
 }
 
 .trad-wrap li, .city-wrap li{
@@ -58,14 +64,16 @@ map .active {
 }
 
 .city-wrap li {
-    border: solid 1px #FFFFFF;
+    border: 0;
+    padding: 8px 0;
+    margin-bottom: 1px
 }
 
 .city-wrap li a {
     color: #000000;
     pointer-events: none;
     font-family: "Schoolbell",cursive,bold;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
 }
 
