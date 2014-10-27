@@ -167,7 +167,9 @@
                                 'data': p,
                                 'success': function (data) {
                                     $('.city-wrap-list').empty();
+                                    var $i = 0;
                                     $.each(data, function (key, value) {
+                                        $i++;
                                         var peoples = population[key];
                                         var singers = data[key];
                                         var points = (singers / peoples) * 100;
