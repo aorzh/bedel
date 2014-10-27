@@ -53,3 +53,16 @@ footer td {
     text-align: center;
     width: 100px;
 }
+
+.field-tradition-photos {
+    border-top: 2px dotted #419185;
+    margin-top: 25px;
+    padding-top: 25px;
+    text-align: center
+}
+
+.field-tradition-photos img {
+    border-radius: 8px;
+    max-width: none;
+    margin: 25px 25px 0  0;
+}

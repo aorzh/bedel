@@ -26,7 +26,11 @@
                 '</tr>' +
                 '</table >' +
                 '</section>';
-            $(output).insertAfter($('.body '));
+            $(output).insertAfter($('.field-tradition-photos '));
+
+            if($('.field-tradition-photos ').find('.field-content').is(':empty')) {
+                $('.field-tradition-photos ').css('display', 'none');
+            }
         }
 
     });
