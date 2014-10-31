@@ -31,6 +31,7 @@
             if($('.field-tradition-photos ').find('.field-content').is(':empty')) {
                 $('.field-tradition-photos ').css('display', 'none');
             }
+            $('<section class="field-requirements-list "><p class="zelf"><span style="color: #ef3f4a">Zelf</span><span>op pad <span style="color: #ef3f4a">gaan?</span></span></p><p class="descr">Wat heb je nodig om op pad te gaan? Hieronder vind je de benodigdheden:</p></section> ').insertAfter($('.field-music '));
         }
 
     });

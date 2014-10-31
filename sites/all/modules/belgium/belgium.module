@@ -146,6 +146,10 @@ function belgium_block_info() {
     $blocks['map'] = array(
         'info' => t('Belgium map'),
     );
+    // @todo add only on listed pages
+    $blocks['ideas'] = array(
+        'info' => t('Ideas block'),
+    );
 
     return $blocks;
 }
@@ -163,6 +167,9 @@ function belgium_block_view($delta = '') {
             $block['subject'] = '';
             $block['content'] = _belgium_render_map();
             break;
+        case 'ideas':
+            $block['subject'] = '';
+            $block['content'] = _belgium_ideas();
     }
 
     return $block;
@@ -187,6 +194,82 @@ function belgium_terms($voc_name) {
 
     }
     return $names;
+}
+
+function _belgium_ideas() {
+    $nid = arg(1);
+    $node = node_load($nid);
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $tradition = $node_wrapper->field_tradition->value();
+    //Tradition term id for current page
+    $tid = $tradition->tid;
+
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'title'));
+    $query->leftJoin('field_data_field_subtitle', 'fs', 'n.nid = fs.entity_id');
+    $query->fields('fs', array('field_subtitle_value'));
+    $query->innerJoin('field_data_field_van_toepassing_bij', 'vj', 'n.nid = vj.entity_id');
+    $query->condition('vj.field_van_toepassing_bij_tid', $tid, '=');
+    $query->condition('vj.bundle', 'requirements', '=');
+    $query->condition('n.type', 'requirements', '=');
+    $node_list = $query->execute();
+    $ideas = $node_list->fetchAll();
+
+    $query = db_select('field_data_field_titel', 'ft');
+    $query->fields('ft', array('entity_id', 'field_titel_value'));
+    $query->innerJoin('field_data_field_van_toepassing_bij', 'vj', 'ft.entity_id = vj.entity_id');
+    $query->condition('vj.field_van_toepassing_bij_tid', $tid, '=');
+    $query->condition('vj.bundle', 'new_idea', '=');
+    $node_list = $query->execute();
+    $ideas_form = $node_list->fetchAll();
+
+    $ideas_merge = array_merge($ideas, $ideas_form);
+
+    $ideas_clean = _belgium_cleanup($ideas_merge);
+
+    $output = '';
+    $output = '<div class="idea">';
+    $output .= '<ul>';
+    foreach ($ideas_clean as $key => $value) {
+
+        $output .= '<li><div class="title">' . $value['title']. '</div>';
+        if(isset($value['subtitle'])){
+            $output .= '<div class="subtitle">' . $value['subtitle']. '</div></li>';
+        } else {
+            $output .= '</li>';
+        }
+    }
+    $output .= '</ul>';
+    $output .= '</div>';
+
+    return $output;
+
+}
+
+function _belgium_cleanup($res){
+    $return = array();
+    $i = 0;
+    foreach ($res as $key => $value) {
+        if(isset($value->nid)) {
+            $return[$i]['nid'] = $value->nid;
+        }
+        if(isset($value->title)) {
+            $return[$i]['title'] = $value->title;
+        }
+        if(isset($value->field_subtitle_value)) {
+            $return[$i]['subtitle'] = $value->field_subtitle_value;
+        }
+
+        if(isset($value->entity_id)) {
+            $return[$i]['nid'] = $value->entity_id;
+        }
+        if(isset($value->field_titel_value)) {
+            $return[$i]['title'] = $value->field_titel_value;
+        }
+        $i++;
+    }
+
+    return $return;
 }
 
 function belgium_tooltip() {
