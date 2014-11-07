@@ -70,3 +70,69 @@ footer td {
 .page-eform-submit-new-idea #edit-field-published {
     display: none;
 }
+
+#block-belgium-ideas {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.idea-list {
+    display: inline-block;
+    /*width: 250px;*/
+}
+
+section.field-requirements-list {
+    text-align: left;
+    min-height: 300px;
+}
+
+ul.idea-list {
+    list-style-image: url("/sites/default/files/default_images/list1.png");
+    list-style-position: outside;
+}
+
+li .title a {
+    font-family: "Schoolbell",cursive,bold;
+    font-size: 22px;
+    color: #ef3f4a;
+}
+
+.btn-to-list {
+    background-color: #ef3f4a;
+    border-radius: 8px;
+    clear: left;
+    color: #ffffff;
+    float: right;
+    font-weight: 500;
+    height: 50px;
+    padding: 5px 20px;
+    text-align: center;
+    width: 140px;
+    margin-top: -75px;
+}
+
+.btn-to-list a, .btn-to-list a:active, .btn-to-list a:hover {
+    color: #ffffff;
+}
+
+.title-wrap {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.zelf {
+    font-size: 60px;
+}
+
+.idea-list li {
+    width: 250px;
+    padding-bottom: 25px;
+}
+
+.idea-list li.even {
+    float: left;
+}
+
+.idea-list li.odd {
+    float: right;
+}
