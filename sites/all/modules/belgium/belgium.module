@@ -218,6 +218,8 @@ function _belgium_ideas() {
     $query = db_select('field_data_field_titel', 'ft');
     $query->fields('ft', array('entity_id', 'field_titel_value'));
     $query->innerJoin('field_data_field_van_toepassing_bij', 'vj', 'ft.entity_id = vj.entity_id');
+    $query->leftJoin('field_data_field_subtitle', 'fs', 'ft.entity_id = fs.entity_id');
+    $query->fields('fs', array('field_subtitle_value'));
     $query->condition('vj.field_van_toepassing_bij_tid', $tid, '=');
     $query->condition('vj.bundle', 'new_idea', '=');
     $node_list = $query->execute();
@@ -227,43 +229,43 @@ function _belgium_ideas() {
 
     $ideas_clean = _belgium_cleanup($ideas_merge);
 
-    $output = '';
-    $output = '<div class="idea">';
-    $output .= '<ul>';
-    foreach ($ideas_clean as $key => $value) {
+    $output = '<ul class="idea idea-list">';
 
-        $output .= '<li><div class="title">' . $value['title']. '</div>';
-        if(isset($value['subtitle'])){
-            $output .= '<div class="subtitle">' . $value['subtitle']. '</div></li>';
+    foreach ($ideas_clean as $key => $value) {
+        $output .= '<li><div class="title-wrap"><span class="title"><a href="/' . $value['arg'] . '/' . $value['nid'] . '">' . $value['title'] . '</a></span>';
+        if (isset($value['subtitle'])) {
+            $output .= '<br /><span class="subtitle">' . $value['subtitle'] . '</span><div></li>';
         } else {
-            $output .= '</li>';
+            $output .= '</div></li>';
         }
+
     }
     $output .= '</ul>';
-    $output .= '</div>';
 
     return $output;
 
 }
 
-function _belgium_cleanup($res){
+function _belgium_cleanup($res) {
     $return = array();
     $i = 0;
     foreach ($res as $key => $value) {
-        if(isset($value->nid)) {
+        if (isset($value->nid)) {
             $return[$i]['nid'] = $value->nid;
+            $return[$i]['arg'] = 'node';
         }
-        if(isset($value->title)) {
+        if (isset($value->title)) {
             $return[$i]['title'] = $value->title;
         }
-        if(isset($value->field_subtitle_value)) {
+        if (isset($value->field_subtitle_value)) {
             $return[$i]['subtitle'] = $value->field_subtitle_value;
         }
 
-        if(isset($value->entity_id)) {
+        if (isset($value->entity_id)) {
             $return[$i]['nid'] = $value->entity_id;
+            $return[$i]['arg'] = 'entityform';
         }
-        if(isset($value->field_titel_value)) {
+        if (isset($value->field_titel_value)) {
             $return[$i]['title'] = $value->field_titel_value;
         }
         $i++;
@@ -300,7 +302,7 @@ function belgium_tooltip() {
     }
 
 
-    $points = ($singers_sum / $population)*100;
+    $points = ($singers_sum / $population) * 100;
 
     $output = '<b>' . $town . '</b> <br /> <p>- ' . $singers_sum . ' deelnames<br />- ' . round($points, 2) . ' punten</p>';
 
@@ -357,6 +359,7 @@ function belgium_tradition_info() {
  */
 function _belgium_render_map() {
     $path = drupal_get_path('module', 'belgium');
+    $metadata = $path . '/js/jquery.metadata.js';
     $path_to_js = $path . '/js/script.js';
     $path_to_css = $path . '/css/style.css';
     $image_resize = $path . '/js/imageMapResizer.min.js';
@@ -388,7 +391,8 @@ function _belgium_render_map() {
     drupal_add_css($tooltip_css);
     drupal_add_js($tooltip_js);
     drupal_add_js($tooltip_js_map);
-    //drupal_add_js($tooltip_js_img);
+
+    drupal_add_js($metadata);
     //drupal_add_js($tooltip_js_img_map);
 
     drupal_add_js($path_to_js);
@@ -411,11 +415,11 @@ function belgium_tradition_generate() {
     drupal_json_output($name);
 }
 
-function belgium_tradition_get(){
+function belgium_tradition_get() {
     $name = $_POST['trad_name'];
     $termin = taxonomy_get_term_by_name($name);
     $tid = '';
-    foreach($termin as $t) {
+    foreach ($termin as $t) {
         $tid = $t->tid;
     }
     drupal_json_output($tid);

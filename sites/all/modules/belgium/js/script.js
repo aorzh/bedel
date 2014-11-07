@@ -11,7 +11,8 @@
             $('#block-belgium-map').prepend(tradWrap).append(cityWrap);
             $.each(traditions, function (key, value) {
                 var link = value.toLowerCase();
-                $('.trad-wrap-list').append('<li><span class="arrow"> » </span><a name="' + key + '" href="#' + link + '">' + value + '</a></li>');
+                $('.trad-wrap-list').append('<li class="' + link + '"><span class="arrow"> » </span>' +
+                    '<a name="' + key + '" href="#' + link + '">' + value + '</a></li>');
             });
 
             //First active by default
@@ -50,7 +51,7 @@
                                             'url': 'ajax/tooltip',
                                             'type': 'POST',
                                             'dataType': 'json',
-                                            'data':  {town: $(this).attr('id'), tradition_id: k},
+                                            'data': {town: $(this).attr('id'), tradition_id: k},
                                             'success': function (content) {
                                                 return content
                                             }
@@ -59,7 +60,10 @@
                                 }
                             });
 
-                            $('.city-wrap-list').append('<li style="background-color: rgba(' + colors + ', .6)"><div class="point-left"><span class="number" style="color: ' + colors + '">' + i + '</span></div><div class="point-right"><a name="' + points + '" href="#' + link + '">' + key + '</a><span class="points">' + points.toFixed(2) + ' punten</span></div></li>');
+                            $('.city-wrap-list').append('<li style="background-color: rgba(' + colors + ', .6)"><div class="point-left">' +
+                                '<span class="number" style="color: ' + colors + '">' + i + '</span></div><div class="point-right">' +
+                                '<a name="' + points + '" href="#' + link + '">' + key + '</a>' +
+                                '<span class="points">' + points.toFixed(2) + ' punten</span></div></li>');
                         });
                     }
                 });
@@ -91,7 +95,44 @@
     }
 
 
+    function colorHex(city) {
+        var c = '';
+        if (city == 'geel') {
+            c = 'efb848';
+        } else if (city == 'dessel') {
+            c = '862084';
+        } else if (city == 'mol') {
+            c = '008aaf';
+        } else if (city == 'balen') {
+            c = 'd35144';
+        } else if (city == 'retie') {
+            c = '40af49';
+        } else if (city == 'laakdal') {
+            c = 'f37052';
+        } else {
+            c = '46be95';
+        }
+        return c;
+    }
+
+
     $(document).ready(function () {
+
+        $('#Image-Maps-Com-belgium').wrap('<div class="map-wrap"></div>').maphilight();;
+        $('area').each(function () {
+            $(this).mouseover(function (e) {
+                e.preventDefault();
+                window.globaCity = $(this).attr('id');
+
+                var data = $('#'+ window.globaCity).data('maphilight') || {};
+
+                data.fillColor = colorHex(window.globaCity);
+                data.neverOn = !data.neverOn;
+                $('#'+ window.globaCity).data('maphilight', data);
+                $('#'+ window.globaCity).attr('data-maphilight', '{"strokeColor":"' + colorHex(window.globaCity) + '","strokeWidth":1, "fillColor":"' + colorHex(window.globaCity) + '", "fillOpacity": 1}');
+            });
+
+        });
 
         var population = Drupal.settings.belgium.population;
         //Default pre-load
@@ -118,7 +159,7 @@
                                     'url': 'ajax/tooltip',
                                     'type': 'POST',
                                     'dataType': 'json',
-                                    'data':  {town: $(this).attr('id'), tradition_id: 1},
+                                    'data': {town: $(this).attr('id'), tradition_id: 1},
                                     'success': function (content) {
                                         return content
                                     }
@@ -127,7 +168,11 @@
                         }
                     });
 
-                    $('.city-wrap-list').append('<li style="background-color: rgba(' + colors + ', .6)"><div class="point-left"><span class="number" style="color: ' + colors + '">' + i + '</span></div><div class="point-right"><a href="#' + link + '">' + key + '</a><span class="points">' + points.toFixed(2) + ' punten</span></div></li>');
+                    $('.city-wrap-list').append('<li style="background-color: rgba(' + colors + ', .6)">' +
+                        '<div class="point-left"><span class="number" style="color: ' + colors + '">' + i + '</span></div>' +
+                        '<div class="point-right"><a href="#' + link + '">' + key + '</a>' +
+                        '<span class="points">' + points.toFixed(2) + ' punten</span></div></li>');
+
                 });
             }
         });
@@ -145,9 +190,9 @@
                 'dataType': 'json',
                 'data': s,
                 'success': function (data) {
-                    $('.trad-wrap-list').find('li').each(function(){
+                    $('.trad-wrap-list').find('li').each(function () {
                         $(this).removeClass('active');
-                        if($(this).find('a').attr('href') == '#'+data) {
+                        if ($(this).find('a').attr('href') == '#' + data) {
                             $(this).addClass('active');
                         }
                     });
@@ -183,7 +228,7 @@
                                                         'url': 'ajax/tooltip',
                                                         'type': 'POST',
                                                         'dataType': 'json',
-                                                        'data':  {town: $(this).attr('id'), tradition_id: d},
+                                                        'data': {town: $(this).attr('id'), tradition_id: d},
                                                         'success': function (content) {
                                                             return content
                                                         }
@@ -192,7 +237,10 @@
                                             }
                                         });
 
-                                        $('.city-wrap-list').append($('<li style="background-color: rgba(' + colors + ', .6)"><div class="point-left"><span class="number" style="color: ' + colors + '">' + i + '</span></div><div class="point-right"><a href="#' + link + '">' + key + '</a><span class="points">' + points.toFixed(2) + ' punten</span></div></li>'));
+                                        $('.city-wrap-list').append($('<li style="background-color: rgba(' + colors + ', .6)">' +
+                                            '<div class="point-left"><span class="number" style="color: ' + colors + '">' + i + '</span></div>' +
+                                            '<div class="point-right"><a href="#' + link + '">' + key + '</a>' +
+                                            '<span class="points">' + points.toFixed(2) + ' punten</span></div></li>'));
                                     });
                                 }
                             });
@@ -204,20 +252,23 @@
 
 
         //map hightlight functional
-        $('img[usemap]').maphilight({ stroke: false, fillColor: '008bb2', fillOpacity: 1, wrapClass: 'map-wrap' });
+        //$('img[usemap]').maphilight({ stroke: false, fillColor:"1115a5", fillOpacity: 1, wrapClass: 'map-wrap' });
+        //$('img[usemap]').maphilight({wrapClass: 'map-wrap', fillOpacity: 1});
 
 
-        /*$('a').click(function (e) {
-            e.preventDefault();
-            var hightLightId = $(this).text().replace('#', '').toLowerCase();
-            $('area').data('maphilight', data);
-            var data = $('#' + hightLightId).mouseout().data('maphilight') || {};
-            data.alwaysOn = !data.alwaysOn;
-            $('#' + hightLightId).data('maphilight', data).trigger('alwaysOn.maphilight');
-        });*/
+
+        //hide two traditions
+        function hideTradition(trad) {
+            $(trad).hide();
+        }
+
+        hideTradition('.zing');
+        hideTradition('.uitgedoofde');
 
         // Image resize support
         $('map').imageMapResize();
+
+
     });
 
 })(jQuery, Drupal, this, this.document);
