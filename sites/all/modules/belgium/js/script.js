@@ -118,22 +118,6 @@
 
     $(document).ready(function () {
 
-        $('#Image-Maps-Com-belgium').wrap('<div class="map-wrap"></div>').maphilight();;
-        $('area').each(function () {
-            $(this).mouseover(function (e) {
-                e.preventDefault();
-                window.globaCity = $(this).attr('id');
-
-                var data = $('#'+ window.globaCity).data('maphilight') || {};
-
-                data.fillColor = colorHex(window.globaCity);
-                data.neverOn = !data.neverOn;
-                $('#'+ window.globaCity).data('maphilight', data);
-                $('#'+ window.globaCity).attr('data-maphilight', '{"strokeColor":"' + colorHex(window.globaCity) + '","strokeWidth":1, "fillColor":"' + colorHex(window.globaCity) + '", "fillOpacity": 1}');
-            });
-
-        });
-
         var population = Drupal.settings.belgium.population;
         //Default pre-load
         var i = 0;
@@ -256,6 +240,28 @@
         //$('img[usemap]').maphilight({wrapClass: 'map-wrap', fillOpacity: 1});
 
 
+
+        $('area').each(function () {
+            $(this).mouseover(function (e) {
+                e.preventDefault();
+                window.globaCity = $(this).attr('id');
+
+                var data = $('#'+ window.globaCity).data('maphilight') || {};
+                //$('area').metadata();
+                data.fillColor = colorHex(window.globaCity);
+                //data.neverOn = !data.neverOn;
+                $('#'+ window.globaCity).data('maphilight', data);
+                $('#'+ window.globaCity).attr('data-maphilight', '{"strokeColor":"' + colorHex(window.globaCity) + '","strokeWidth": 0, "fillColor":"' + colorHex(window.globaCity) + '", "fillOpacity": 1}');
+            });
+
+        });
+
+        $('#Image-Maps-Com-belgium').wrap('<div class="map-wrap map"></div>');
+        $('#Image-Maps-Com-belgium').maphilight({
+            fillColor: 'CECECE',
+            stroke: false,
+            fillOpacity: 1
+        });
 
         //hide two traditions
         function hideTradition(trad) {

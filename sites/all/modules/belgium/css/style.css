@@ -1,12 +1,14 @@
 
 .map-wrap {
-display: inline-block !important;
-width: 390px !important;
-margin: 0 40px !important;
+    display: inline-block !important;
+    width: 390px !important;
+    margin: 0 40px !important;
 }
+
 map .active {
     display: none;
 }
+
 #block-belgium-map ul li {
     list-style-type: none;
 }
@@ -19,19 +21,22 @@ map .active {
 .trad-wrap, .map-wrap, .city-wrap {
     float: left;
 }
+
 .city-wrap {
     float: right;
 }
+
 .trad-wrap ul {
     width: 215px;
     padding-left: 0
 }
+
 .city-wrap ul {
     width: 180px;
     padding-left: 0
 }
 
-.trad-wrap li, .city-wrap li{
+.trad-wrap li, .city-wrap li {
     padding: 15px 0;
     border-top: 1px solid #bfbfbf;
     background-color: #edf9f4;
@@ -45,6 +50,7 @@ map .active {
     color: #000000;
     text-decoration: underline;
 }
+
 .arrow {
     color: #4bb454;
     padding-left: 10px;
@@ -72,7 +78,7 @@ map .active {
 .city-wrap li a {
     color: #000000;
     pointer-events: none;
-    font-family: "Schoolbell",cursive,bold;
+    font-family: "Schoolbell", cursive, bold;
     font-size: 22px;
     font-weight: 400;
 }
