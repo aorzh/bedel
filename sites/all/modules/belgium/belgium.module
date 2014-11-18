@@ -266,7 +266,6 @@ function _belgium_ideas() {
 }
 
 function _belgium_cleanup($res) {
-    krumo($res);
     $return = array();
     $i = 0;
     $path = drupal_get_path('module', 'belgium');
