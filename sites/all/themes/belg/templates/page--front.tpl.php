@@ -161,6 +161,7 @@
             </div>
 
     </div>
+
     <?php print render($page['footer']); ?>
 
 </div>

@@ -62,7 +62,7 @@
         var titel = $('.field-name-field-titel').find('.field-item').text();
         if (titel.length != 0 && subt.length == 0) {
             $('#page-title').text(titel);
-        } else {
+        } else if(titel.length != 0 && subt.length != 0) {
             $('#page-title').text(subt);
         }
 
@@ -82,12 +82,12 @@
             }
         });
 
+
         // add title to entityform
-        var titleText = $('.page-entityform')
+        var titleText = $('.entityform-competition')
             .find('.field-name-field-tradition')
             .find('a').text();
-
-        $('.page-entityform').find('#page-title').text(titleText);
+        $('.entityform-competition').parent('#content').find('#page-title').text(titleText);
 
         //Hide email for not-logged-in
         //$('.field-name-field-e-mailadres-wordt-niet-get').hide();

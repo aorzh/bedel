@@ -28,7 +28,8 @@
         <meta name="HandheldFriendly" content="true">
     <?php endif; ?>
     <meta http-equiv="cleartype" content="on">
-      <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    
 
     <?php print $styles; ?>
     <?php print $scripts; ?>

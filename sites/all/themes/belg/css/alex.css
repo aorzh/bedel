@@ -1,4 +1,4 @@
-footer table {
+    footer table {
     margin: 0 auto;
 }
 
@@ -64,8 +64,10 @@ footer td {
 .field-tradition-photos img {
     border-radius: 8px;
     max-width: none;
-    margin: 25px 25px 0  0;
+    margin: 25px 12px 0  0;
+    border:5px solid #FFF
 }
+.field-tradition-photos .field-content {margin-left: 60px;text-align: left;}
 
 .page-eform-submit-new-idea #edit-field-published {
     display: none;
@@ -84,10 +86,11 @@ footer td {
 section.field-requirements-list {
     text-align: left;
     min-height: 300px;
+    clear: left;
 }
 
 ul.idea-list {
-    list-style-image: url("/sites/default/files/default_images/list1.png");
+   /* list-style-image: url("/sites/default/files/default_images/list1.png");*/
     list-style-position: outside;
 }
 
@@ -125,8 +128,9 @@ li .title a {
 }
 
 .idea-list li {
-    width: 250px;
+    width: 50%;
     padding-bottom: 25px;
+    float: left;
 }
 
 .idea-list li.even {

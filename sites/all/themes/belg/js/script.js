@@ -22,9 +22,62 @@
         }
     };
     $(document).ready(function () {
+        $("body.node-type-tradition .field-requirements-list").append($("body.node-type-tradition #block-belgium-ideas"));
+
+
+        $('.view-shows-teaser').find('.views-row').each(function () {
+            var tabDiv = $('.views-row').find('.views-field-nothing');
+            $.each(tabDiv, function () {
+                var divWat = $(this).parent().find('.views-field-field-wat');
+                var divWaar = $(this).parent().find('.views-field-field-waar');
+                var divWanneer = $(this).parent().find('.views-field-field-wanneer');
+                var divWebsite = $(this).parent().find('.views-field-field-website');
+                
+                
+                //$(this).find('.right').append(divWanner);
+                if(divWat.find('.field-content').is(':empty')) {
+                    divWat.remove();
+                }
+                else{
+                    
+                    $(this).find('.right').append(divWat);
+                }
+
+                if(divWaar.find('.field-content').is(':empty') ) {
+                    divWaar.remove();
+                }
+                else{
+                    $(this).find('.right').append(divWaar);
+                }
+
+                if(divWanneer.find('.field-content').is(':empty') ) {
+                    divWanneer.remove();
+                }
+                else{
+                    
+                    $(this).find('.right').append(divWanneer);
+                }
+
+                if(divWebsite.find('.field-content').is(':empty') ) {
+                    divWebsite.remove();
+                }
+                else{
+                    
+                    $(this).find('.right').append(divWebsite);
+                }
+            });
+
+            
+        });
+
+
         $(".sitename:contains('Zing Ze!')").each(function () {
             $(this).html($(this).html().replace("Zing", "<span class='name-first'>Zing</span>"));
             $(this).html($(this).html().replace("Ze!", "<span class='name-second'>Ze!</span>"));
+        });
+        $("#backLink").click(function(event) {
+            event.preventDefault();
+            history.back(1);
         });
 
         $('.date-display-single').each(function () {
@@ -111,6 +164,7 @@
         })
 
         $( ".row-by-four .views-row:nth-child(4n+4)" ).addClass( "nopad-r" );
+        $( ".row-by-two:nth-child(2n+2)" ).addClass( "even" );
         /*var
 
         color = function(){

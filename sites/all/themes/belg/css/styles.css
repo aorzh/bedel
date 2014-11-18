@@ -167,6 +167,9 @@ font-size: 12px;
 .view-main-traditions .views-field-field-tradition {
 margin-bottom: 0 !important;
 }
+.field-tradition-photos {overflow: hidden;}
+.field-tradition-photos .field-items{margin-left: 55px}
+.field-tradition-photos img {float: left}
 #block-block-1 ,#block-block-1--2 {
 background-color: #851f83;
 border-radius: 8px;
@@ -263,7 +266,13 @@ margin-right: 0;
 font-size: 13px;
 }
 .row-by-two.views-row{width: 100% !important}
-.welcome-section .views-row{width: 430px;float:left;}
+.welcome-section .views-row,
+.view-shows-teaser .views-row{width: 430px;float:left;margin-bottom: 30px}
+.view-shows-teaser .view-content {width: 870px !important;
+margin: 0 auto !important;
+float: none !important;
+padding: 0 !important;}
+.view-shows-teaser .view-footer{clear: both;padding-bottom: 60px; text-align: right;}
 .welcome-section .more{clear: both;}
 .view-shows-teaser .views-row .left{text-align: center;float: left;}
 .view-shows-teaser .views-row .right{float:left;width: 250px }
@@ -273,9 +282,10 @@ font-size: 13px;
 .view-shows-teaser .even .views-row-odd .views-field-field-date{background-color: #862084;}
 .view-shows-teaser .even .views-row-even .views-field-field-date{background-color: #639a1f;}
 .show-day {
-    font-size: 34px;
-    font-style: normal;
-    font-weight: bold;
+font-size: 38px;
+font-style: normal;
+font-weight: bold;
+margin-top: 3px;
 }
 
 span.date-display-single {
@@ -292,11 +302,13 @@ span.date-display-single {
 .view-shows-teaser .even .views-row-odd .views-field-field-tradition {color: #862084;}
 
 .views-field-field-tradition {
-    font-size: 28px;
+    font-size: 28px !important;
     font-family: "Schoolbell",cursive,bold;
 }
-
-.view-shows-teaser .views-field-body {
+.view-shows-teaser .views-label{display: inline-block; margin-right: 2px}
+.view-shows-teaser .field-content{display: inline-block;}
+.view-shows-teaser .views-field-body,
+.view-shows-teaser .right div {
     font-size: 11px;
 }
 
@@ -346,6 +358,8 @@ span.date-display-single {
     margin-top: 0;
 }
 
+
+
 /*tradition home*/
 
 .page-tradition .houses > img {
@@ -371,8 +385,8 @@ top: 53px;
 
 section.field-when-and-where, section.field-requirements-list{
     border-top: 2px dotted #419185;
-    margin-top: 25px;
-    padding-top: 25px;
+    margin-top: 40px;
+    padding-top: 40px;
     text-align: center;
 }
 section.field-requirements-list {
@@ -386,8 +400,9 @@ section.field-requirements-list ul > li{
 
 section.field-music {
     border-top: 2px dotted #419185;
-    margin-top: 25px;
-    padding-top: 25px;
+    margin-top: 40px;
+    padding-top: 40px;
+    overflow: hidden;
 }
 
 .music-left {
@@ -397,7 +412,7 @@ section.field-music {
 
 .music-right {
     float: right;
-    width: 600px
+    width: 560px
 }
 .music-right .field-name-field-image{text-align: right;}
 .music-right .field-item.even > img {
@@ -444,6 +459,7 @@ section.field-when-and-where li {
     text-align: left;
     padding-left: 15px;
 }
+#block-views-submissions-block{padding-bottom: 40px}
 .field-content.sub-tradition a{
     color: #ef3f4a
 }
@@ -457,12 +473,19 @@ section.field-when-and-where li {
 float: left;
 top: 15px;
 }
-
-.view-page-footer-block .views-row {
-    display: inline-block;
-    padding: 0 60px 25px 0;
+.pdf-section .col-md-offset-4 {
+margin-left: 0;
+margin: 0 auto;
+float: none;
 }
-
+.view-page-footer-block .view-content{text-align: center;}
+.view-page-footer-block .views-row {
+display: inline-block;
+padding: 0 0px 25px 0;
+text-align: center;
+margin: 0 auto;
+width: auto;
+}
 .view-page-footer-block  .views-field.views-field-field-image img{
     margin-top: -50px;
     overflow: visible;
@@ -753,6 +776,7 @@ right: 0;
     font-size: 3em;
     padding-left: 60px;
     font-family: "Schoolbell",cursive,bold;
+    line-height: 100%
 }
 
 p.descr {
@@ -813,24 +837,25 @@ p.descr {
 
 .section-contact #content{padding-left: 60px;}
 .page__title{font-family: 'Schoolbell', cursive, bold;font-size: 56px;color: rgb(222, 30, 33);margin-bottom: 31px}
-.contact-form {padding-bottom: 70px}
-.contact-form .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
-.contact-form label {width: 160px;font-weight: normal;float: left;font-size: 14px}
-.contact-form .form-textarea-wrapper,.contact-form  .form-text{width: 630px; float: left; font-size: 14px}
+.contact-form,.webform-client-form {padding-bottom: 70px}
+.contact-form .form-item,.webform-client-form  .form-item,
+#users-activity-node-form .form-item {clear: both;margin-bottom: 15px; overflow: hidden;}
+.contact-form label,
+.webform-client-form  label,
+#users-activity-node-form label {width: 160px;font-weight: normal;float: left;font-size: 14px;margin-right: 1em;}
+.contact-form .form-textarea-wrapper,.contact-form  .form-text,
+.webform-client-form .form-textarea-wrapper,.webform-client-form .form-text,
+#users-activity-node-form .form-text, #users-activity-node-form .form-textarea-wrapper{width: 630px; float: left; font-size: 14px}
 input,  select, textarea{padding: 3px}
-.form-submit
-{background-color: #ef3f4a;
-border: 0;
-border-radius: 7px;
-color: #ffffff;
-display: inline-block;
-margin: 0 auto;
-padding: 5px 10px;
-text-align: center;
-font-size: 14px;}
+.form-submit{background-color: #ef3f4a;border: 0;border-radius: 7px;color: #ffffff;display: inline-block;margin: 0 auto;padding: 5px 10px;text-align: center;font-size: 14px;}
 .form-item-copy{display: none;}
+.section-entityform #content{padding-left: 60px;}
+.entity-entityform .content{padding-bottom: 70px}
 
-.entityform {padding-bottom: 70px;font-size: 12px}
+.entityform .form-type-checkbox{margin-left: 260px }
+.entityform .form-type-checkbox input,#users-activity-node-form .form-type-checkbox input{float: left;margin-right: 10px;}
+
+.entityform {padding-bottom: 70px;font-size: 14px}
 .pre-intructions{padding:20px 0;font-size: 14px}
 .entityform .form-item {clear: both;margin-bottom: 15px; overflow: hidden;font-size: 14px}
 .entityform .form-type-date-popup{margin-bottom: 0}
@@ -838,29 +863,33 @@ font-size: 14px;}
 label{font-size: 14px; font-weight: normal;}
 .entityform label,.entityform  fieldset legend {width: 260px;font-weight: normal;float: left; font-size: 14px; border-bottom: 0}
 .entityform  .field-type-datetime  .description{display: none;}
-.entityform .form-select{width: 270px;}
+
+.entityform .form-select{width: 270px;font-size: 14px;}
+.entity-entityform .field-name-field-titel{display: none;}
 .entityform #edit-field-image .description{margin-left: 260px}
 .entityform .image-widget-data .form-submit,.entityform .image-widget-data  .form-file{float: left;}
 .entityform .form-textarea-wrapper,.entityform .form-text,.entityform  fieldset .fieldset-wrapper{width: 530px; float: left;}
+.form-item-field-youtube-filmpje-und-0-value .description{margin-left: 260px; display: block;clear: left;}
 .page-eform-competition-confirm #content{padding-left: 60px; padding-bottom: 40px}
 
 
-
+div.entity-entityform .submitted,.entityform .submitted{display: none;}
+div.entity-entityform  .field-name-field-evt-foto-s img,
+.node-requirements .field-name-field-evt-foto-s img {border-radius: 8px;max-width: none;margin: 25px 12px 0 0;border: 5px solid #FFF;}
+div.entity-entityform  .field-label,
+.node-requirements .field-label{width: 260px;font-weight: normal;float: left; font-size: 14px; font-weight:normal;border-bottom: 0}
+div.entity-entityform  .field,
+.node-requirements .field  {clear: both;margin-bottom: 15px;overflow: hidden;font-size: 14px;}
 .section-wie .view-header-title{padding-left: 60px; margin-bottom: 40px}
 .views-exposed-form .views-exposed-widget {margin-bottom: 30px;}
 .views-field-field-naam-en-voornaam{color: #009390; padding-left: 15px; text-decoration: underline;}
-body.one-sidebar .sidebars{
-float: left;
-width: 150px;
-margin-left: 60px;
-}
-body.one-sidebar  #content
- {float: right !important;width: 735px !important;padding-left: 0}
+body.one-sidebar .sidebars{float: left;width: 150px;margin-left: 60px;}
+body.one-sidebar  #content{float: right !important;width: 735px !important;padding-left: 0}
 
- .node-type-page #content{padding-left: 60px}
+.node-type-page #content{padding-left: 60px}
 
- #block-views-promo-block-block .views-row{padding: 8px 15px; float: left}
- #block-views-promo-block-block .views-row-first{padding-left: 0px !important;}
+#block-views-promo-block-block .views-row{padding: 8px 15px; float: left}
+#block-views-promo-block-block .views-row-first{padding-left: 0px !important;}
 #block-views-promo-block-block .views-row-last{padding-right: 0px !important;}
 
 body.page-eform #content{padding-left: 60px}
@@ -869,3 +898,26 @@ body.page-eform #content{padding-left: 60px}
 .img_overkerf { vertical-align: bottom; text-align: center; }
 .retie { margin-left: -20px; }
 .meerhout { margin-left: -18px; }
+#edit-field-van-toepassing-bij-und .form-type-checkbox {margin-left: 260px;}
+#edit-field-van-toepassing-bij-und .form-type-checkbox label{}
+#edit-field-van-toepassing-bij-und .form-type-checkbox input {float: left;margin-right: 5px;}
+body.page-activiteiten #content,body.node-type-webform  #content{padding-left: 60px}
+body.node-type-tradition .page__title,
+body.node-type-tradition .view-tradition-home > .field-name-body{margin-left: 60px}
+body.node-type-tradition .btn-to-list{margin-top: -125px;}
+body.page-node-add-users-activity #content{padding-left: 60px; padding-bottom: 60px}
+body.page-node-add-users-activity #users-activity-node-form .form-type-checkbox {margin-left: 175px }
+body.page-node-add-users-activity .form-actions input{margin-right: 10px}
+.field-name-field-button {
+background-color: #ef3f4a;
+border-radius: 7px;
+color: #ffffff;
+display: inline-block;
+margin: 0 auto;
+padding: 5px 10px;
+text-align: center;
+width: auto;
+}
+
+
+
