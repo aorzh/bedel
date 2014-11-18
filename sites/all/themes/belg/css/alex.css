@@ -92,6 +92,7 @@ section.field-requirements-list {
 ul.idea-list {
    /* list-style-image: url("/sites/default/files/default_images/list1.png");*/
     list-style-position: outside;
+    list-style: none;
 }
 
 li .title a {
